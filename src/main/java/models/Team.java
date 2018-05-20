@@ -51,7 +51,7 @@ public class Team {
     public void setPlayers(Set<Player> players) {
         this.players = players;
     }
-
+    @OneToMany(mappedBy="team")
     public Set<Management> getStaff() {
         return staff;
     }

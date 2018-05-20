@@ -45,7 +45,8 @@ public abstract class Management {
     public void setSalary(double salary) {
         this.salary = salary;
     }
-    @Column(name="team")
+    @ManyToOne
+    @JoinColumn(name = "team_id", nullable = false)
     public Team getTeam() {
         return team;
     }
