@@ -70,4 +70,8 @@ public class Competition {
     public void setId(int id) {
         this.id = id;
     }
+
+    public void addTeam(Team team){
+        this.teams.add(team);
+    }
 }

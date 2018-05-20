@@ -1,5 +1,9 @@
 package db;
 
+import models.Competition;
+import models.Management;
+import models.Player;
+import models.Team;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -70,5 +74,21 @@ public class DBHelper {
         } finally {
             session.close();
         }
+    }
+
+    public static void addPlayerToTeam(Team team, Player player){
+        team.addPlayer(player);
+        save(team);
+    }
+
+    public static void addManagementToTeam(Team team, Management management){
+        team.addManagement(management);
+        save(team);
+    }
+
+    public static void addTeamToCompetition(Competition competition, Team team){
+        competition.addTeam(team);
+        team.addCompetition(competition);
+        save(competition);
     }
 }

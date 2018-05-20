@@ -110,4 +110,16 @@ public class Team {
     public void setId(int id) {
         this.id = id;
     }
+
+    public void addCompetition(Competition competition){
+        this.competitions.add(competition);
+    }
+
+    public void addManagement(Management management){
+        this.staff.add(management);
+    }
+
+    public void addPlayer(Player player){
+        this.players.add(player);
+    }
 }
