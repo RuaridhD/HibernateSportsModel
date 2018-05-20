@@ -15,7 +15,7 @@ public class DBCompetition {
     private static Transaction transaction;
     private static Session session;
 
-    public static List<Team> getAllTeamsInCompetition(Competition competition){
+    public static List<Team> allTeamsInCompetition(Competition competition){
         session = HibernateUtil.getSessionFactory().openSession();
         List<Team> teamList = null;
 

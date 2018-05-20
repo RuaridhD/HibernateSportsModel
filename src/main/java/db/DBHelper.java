@@ -90,5 +90,6 @@ public class DBHelper {
         competition.addTeam(team);
         team.addCompetition(competition);
         save(competition);
+        save(team);
     }
 }

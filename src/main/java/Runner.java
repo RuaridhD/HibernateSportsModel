@@ -46,19 +46,20 @@ public class Runner {
         DBHelper.addManagementToTeam(team1, physio1);
         DBHelper.addPlayerToTeam(team1, player1);
         DBHelper.addPlayerToTeam(team1, player2);
-        DBHelper.addTeamToCompetition(competition1, team1);
 
         DBHelper.addManagementToTeam(team2, manager2);
         DBHelper.addManagementToTeam(team2, assistantManager2);
         DBHelper.addManagementToTeam(team2, physio2);
         DBHelper.addPlayerToTeam(team2, player3);
         DBHelper.addPlayerToTeam(team2, player4);
+
+        DBHelper.addTeamToCompetition(competition1, team1);
         DBHelper.addTeamToCompetition(competition1, team2);
 
         List<Team> teamList = DBHelper.getAll(Team.class);
         List<Player> playerList = DBHelper.getAll(Player.class);
 
-        List<Team> allTeamsInCompetition = DBCompetition.getAllTeamsInCompetition(competition1);
+        List<Team> allTeamsInCompetition = DBCompetition.allTeamsInCompetition(competition1);
 
 
     }
