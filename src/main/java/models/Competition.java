@@ -1,8 +1,11 @@
 package models;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name="competitions")
 public class Competition {
 
     private String name;
@@ -21,6 +24,7 @@ public class Competition {
         this.teams = new HashSet<Team>();
     }
 
+    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -28,7 +32,7 @@ public class Competition {
     public void setName(String name) {
         this.name = name;
     }
-
+    @Column(name="number_of_games")
     public int getNumberOfGames() {
         return numberOfGames;
     }
@@ -36,7 +40,7 @@ public class Competition {
     public void setNumberOfGames(int numberOfGames) {
         this.numberOfGames = numberOfGames;
     }
-
+    @Column(name = "sponsors")
     public String getSponsor() {
         return sponsor;
     }
@@ -44,7 +48,10 @@ public class Competition {
     public void setSponsor(String sponsor) {
         this.sponsor = sponsor;
     }
-
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "competition_teams",
+            inverseJoinColumns = {@JoinColumn(name = "team_id", nullable = false, updatable = false)},
+            joinColumns = {@JoinColumn(name = "competition_id", nullable = false, updatable = false)})
     public Set<Team> getTeams() {
         return teams;
     }
@@ -53,6 +60,9 @@ public class Competition {
         this.teams = teams;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }

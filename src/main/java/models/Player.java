@@ -1,11 +1,15 @@
 package models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="players")
 public class Player {
 
     private String name;
     private String position;
     private int age;
-    private String team;
+    private Team team;
     private double Salary;
     private int id;
 
@@ -13,14 +17,14 @@ public class Player {
     public Player() {
     }
 
-    public Player(String name, String position, int age, String team, double salary) {
+    public Player(String name, String position, int age, Team team, double salary) {
         this.name = name;
         this.position = position;
         this.age = age;
         this.team = team;
         Salary = salary;
     }
-
+    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -28,7 +32,7 @@ public class Player {
     public void setName(String name) {
         this.name = name;
     }
-
+    @Column(name="position")
     public String getPosition() {
         return position;
     }
@@ -36,7 +40,7 @@ public class Player {
     public void setPosition(String position) {
         this.position = position;
     }
-
+    @Column(name="age")
     public int getAge() {
         return age;
     }
@@ -45,14 +49,7 @@ public class Player {
         this.age = age;
     }
 
-    public String getTeam() {
-        return team;
-    }
-
-    public void setTeam(String team) {
-        this.team = team;
-    }
-
+    @Column(name="salary")
     public double getSalary() {
         return Salary;
     }
@@ -60,12 +57,24 @@ public class Player {
     public void setSalary(double salary) {
         Salary = salary;
     }
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "team_id", nullable = false)
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }
